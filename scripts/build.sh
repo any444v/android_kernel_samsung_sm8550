@@ -68,7 +68,7 @@ build_kernel() {
     fi
 
     info "Generating .config file using $KERNEL_DEFCONFIG..."
-    make -j$(nproc --all) $MAKE_ARGS $KERNEL_DEFCONFIG ksu.config || error "make defconfig failed."
+    make -j$(nproc --all) $MAKE_ARGS $KERNEL_DEFCONFIG || error "make defconfig failed."
 
     info "Starting main build..."
     make -j$(nproc --all) $MAKE_ARGS "CC=ccache clang" || error "make build failed."
